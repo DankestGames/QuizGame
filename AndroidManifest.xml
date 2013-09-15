@@ -24,15 +24,12 @@
         </activity>
         <activity android:name="ChooseGameActivity" >
         </activity>
+        <activity android:name="OptionsActivity" >
+        </activity>
         <activity android:name="RulesActivity" >
         </activity>
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-        <activity android:name="GameActivity"></activity>
+        <activity android:name="GameActivity" >
+        </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
