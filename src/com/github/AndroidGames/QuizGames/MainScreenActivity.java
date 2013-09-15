@@ -44,6 +44,19 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		getMenuInflater().inflate(R.menu.main_screen, menu);
 		return true;
 	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		if (mediaPlayer != null) {
+			try {
+				mediaPlayer.stop();
+				mediaPlayer.release();
+			} finally {
+				mediaPlayer = null;
+			}
+		}
+    }
 
 	@Override
 	public void onClick(View v) {
