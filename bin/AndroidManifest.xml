@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name="ChooseGameActivity"></activity>
+        <activity android:name="RulesActivity"></activity>
     </application>
 
 </manifest>

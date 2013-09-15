@@ -15,6 +15,7 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 	Button optionsButton;
 	
 	private static final String TAG = "QuizGame";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

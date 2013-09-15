@@ -7,5 +7,7 @@
     <style name="AppBaseTheme" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
         <!-- API 11 theme customizations can go here. -->
     </style>
-
+    <style name="RulesTheme" parent="android:Theme.Holo.Light.Dialog.NoActionBar">
+        
+    </style>
 </resources>
