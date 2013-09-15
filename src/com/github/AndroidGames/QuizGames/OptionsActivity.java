@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
@@ -17,7 +17,7 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 	
 	Button resetStatsButton, helpButton, aboutButton;
 	SeekBar volumeSeekBar;
-	RadioButton soundRadioButton;
+	CheckBox soundCheckBox;
 	
 	AudioManager audioManager;
 
@@ -45,6 +45,9 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
         volumeSeekBar.setMax(maxVolume);
         volumeSeekBar.setProgress(curVolume);         
         volumeSeekBar.setOnSeekBarChangeListener(this);
+        
+        soundCheckBox = (CheckBox) findViewById(R.id.soundCheckBox);
+        soundCheckBox.setOnClickListener(this);
 	}
 	
 	@Override
@@ -57,6 +60,10 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 			intent = new Intent(this, RulesActivity.class);
 			Log.i(TAG, "Starting RulesActivity");
 			startActivity(intent);
+			break;
+		case R.id.soundCheckBox:
+			Log.i(TAG, "soundCheckBox was clicked.");
+			audioManager.setStreamMute(AudioManager.STREAM_MUSIC, soundCheckBox.isChecked());
 			break;
 		}
 	}
