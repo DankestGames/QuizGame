@@ -31,13 +31,11 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		optionsButton.setOnClickListener(this);
 		
 		Log.d(TAG, "start mediaPlayer");
-		try {
-			mediaPlayer.setLooping(true);
-			mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
-			mediaPlayer.start();
-		}catch(Exception e){
-			Log.i(TAG, "MediaPlayer exception " + e.getLocalizedMessage());
-		}
+		mediaPlayer = new MediaPlayer();
+		mediaPlayer.setLooping(true);
+        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
+        mediaPlayer.start();
+
 	}
 
 	@Override
