@@ -11,19 +11,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainScreenActivity extends Activity implements OnClickListener {
-	
+
 	Button gameButton;
 	Button optionsButton;
-	
+
 	MediaPlayer mediaPlayer;
-	
+
 	private static final String TAG = "QuizGame";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_screen_activity);
-		Log.i(TAG, "Main activity created");
+		Log.i(TAG, "MainScreenActivity created");
 		
 		gameButton = (Button) findViewById(R.id.game_button);
 		gameButton.setOnClickListener(this);
@@ -31,9 +31,13 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		optionsButton.setOnClickListener(this);
 		
 		Log.d(TAG, "start mediaPlayer");
-		mediaPlayer.setLooping(true);
-        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
-        mediaPlayer.start();
+		try {
+			mediaPlayer.setLooping(true);
+			mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
+			mediaPlayer.start();
+		}catch(Exception e){
+			Log.i(TAG, "MediaPlayer exception " + e.getLocalizedMessage());
+		}
 	}
 
 	@Override
@@ -46,8 +50,8 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		Intent intent;
-		Log.i(TAG,"The " + v.getId() + " was clicked");
-		switch (v.getId()){
+		Log.i(TAG, "The " + v.getId() + " was clicked");
+		switch (v.getId()) {
 		case R.id.game_button:
 			Log.i(TAG, "Game button was clicked. Creating intent");
 			intent = new Intent(this, ChooseGameActivity.class);
@@ -56,13 +60,13 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.options_button:
 			Log.i(TAG, "Options button was clicked. Creating intent");
-			intent = new Intent(this, GameActivity.class);
+			intent = new Intent(this, OptionsActivity.class);
 			Log.i(TAG, "Starting OptionsActivity");
 			startActivity(intent);
 			break;
-		
+
 		}
-		
+
 	}
 
 }
