@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="ChooseGameActivity"></activity>
         <activity android:name="RulesActivity"></activity>
+        <activity android:name="OptionsActivity"></activity>
     </application>
 
 </manifest>

@@ -46,13 +46,13 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 			Log.i(TAG, "Starting ChooseGameActivity");
 			startActivity(intent);
 			break;
-		/*case R.id.options_button:
+		case R.id.options_button:
 			Log.i(TAG, "Options button was clicked. Creating intent");
 			intent = new Intent(this, OptionsActivity.class);
 			Log.i(TAG, "Starting OptionsActivity");
 			startActivity(intent);
 			break;
-		*/
+		
 		}
 		
 	}

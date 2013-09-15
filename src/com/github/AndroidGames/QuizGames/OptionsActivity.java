@@ -1,6 +1,7 @@
 package com.github.AndroidGames.QuizGames;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +20,16 @@ public class OptionsActivity extends Activity implements OnClickListener{
 	
 	@Override
 	public void onClick(View v) {
-		// TODO Автоматически созданная заглушка метода
-		
+		Intent intent;
+		Log.i(TAG,"The " + v.getId() + " was clicked");
+		switch (v.getId()){
+		case R.id.helpButton:
+			Log.i(TAG, "Options button was clicked. Creating intent");
+			intent = new Intent(this, OptionsActivity.class);
+			Log.i(TAG, "Starting OptionsActivity");
+			startActivity(intent);
+			break;
+		}
 	}
 
 }
