@@ -24,20 +24,29 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080008;
-        public static final int game_button=0x7f080004;
-        public static final int hardcore=0x7f080002;
-        public static final int logo_image=0x7f080003;
-        public static final int on_time=0x7f080001;
-        public static final int options_button=0x7f080005;
-        public static final int rules_text=0x7f080007;
-        public static final int rules_title=0x7f080006;
-        public static final int survival=0x7f080000;
+        public static final int action_settings=0x7f080010;
+        public static final int answer_a_button=0x7f080007;
+        public static final int answer_b_button=0x7f080008;
+        public static final int answer_c_button=0x7f080009;
+        public static final int answer_d_button=0x7f08000a;
+        public static final int game_button=0x7f08000c;
+        public static final int hardcore_button=0x7f080002;
+        public static final int logo_image=0x7f08000b;
+        public static final int on_time_button=0x7f080001;
+        public static final int options_button=0x7f08000d;
+        public static final int points_text=0x7f080005;
+        public static final int question_image=0x7f080006;
+        public static final int rules_text=0x7f08000f;
+        public static final int rules_title=0x7f08000e;
+        public static final int survival_button=0x7f080000;
+        public static final int textView1=0x7f080003;
+        public static final int time_text=0x7f080004;
     }
     public static final class layout {
         public static final int choose_game_activity=0x7f030000;
-        public static final int main_screen_activity=0x7f030001;
-        public static final int rules_activity=0x7f030002;
+        public static final int game_activity=0x7f030001;
+        public static final int main_screen_activity=0x7f030002;
+        public static final int rules_activity=0x7f030003;
     }
     public static final class menu {
         public static final int main_screen=0x7f070000;

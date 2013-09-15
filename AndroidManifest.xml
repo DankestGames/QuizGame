@@ -22,9 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ChooseGameActivity"></activity>
-        <activity android:name="RulesActivity"></activity>
-        <activity android:name="OptionsActivity"></activity>
+        <activity android:name="ChooseGameActivity" >
+        </activity>
+        <activity android:name="OptionsActivity" >
+        </activity>
+        <activity android:name="RulesActivity" >
+        </activity>
+        <activity android:name="GameActivity" >
+        </activity>
     </application>
 
 </manifest>
