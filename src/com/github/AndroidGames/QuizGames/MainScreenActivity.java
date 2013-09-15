@@ -2,6 +2,7 @@ package com.github.AndroidGames.QuizGames;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -13,6 +14,8 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 	
 	Button gameButton;
 	Button optionsButton;
+	
+	MediaPlayer mediaPlayer;
 	
 	private static final String TAG = "QuizGame";
 	
@@ -26,6 +29,11 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		gameButton.setOnClickListener(this);
 		optionsButton = (Button) findViewById(R.id.options_button);
 		optionsButton.setOnClickListener(this);
+		
+		Log.d(TAG, "start mediaPlayer");
+		mediaPlayer.setLooping(true);
+        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
+        mediaPlayer.start();
 	}
 
 	@Override
