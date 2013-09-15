@@ -9,31 +9,32 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ChooseGameActivity" >
-
-    <ImageView
-        android:id="@+id/logo_image"
-        android:layout_width="203dp"
-        android:layout_height="203dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_launcher" />
+    tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/game_button"
+        android:id="@+id/survival"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logo_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Game" />
+        android:layout_centerVertical="true"
+        android:text="Survival" />
 
     <Button
-        android:id="@+id/options_button"
+        android:id="@+id/on_time"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/game_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Opitons" />
+        android:layout_above="@+id/survival"
+        android:layout_alignLeft="@+id/survival"
+        android:layout_marginBottom="50dp"
+        android:text="On time" />
+
+    <Button
+        android:id="@+id/hardcore"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/survival"
+        android:layout_below="@+id/survival"
+        android:layout_marginTop="50dp"
+        android:text="Hardcore" />
 
 </RelativeLayout>
