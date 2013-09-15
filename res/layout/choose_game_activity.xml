@@ -12,7 +12,7 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/survival"
+        android:id="@+id/survival_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -20,20 +20,20 @@
         android:text="Survival" />
 
     <Button
-        android:id="@+id/on_time"
+        android:id="@+id/on_time_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/survival"
-        android:layout_alignLeft="@+id/survival"
+        android:layout_above="@+id/survival_button"
+        android:layout_alignLeft="@+id/survival_button"
         android:layout_marginBottom="50dp"
         android:text="On time" />
 
     <Button
-        android:id="@+id/hardcore"
+        android:id="@+id/hardcore_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/survival"
-        android:layout_below="@+id/survival"
+        android:layout_alignLeft="@+id/survival_button"
+        android:layout_below="@+id/survival_button"
         android:layout_marginTop="50dp"
         android:text="Hardcore" />
 
