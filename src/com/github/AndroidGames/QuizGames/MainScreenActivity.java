@@ -31,6 +31,7 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		optionsButton.setOnClickListener(this);
 		
 		Log.d(TAG, "start mediaPlayer");
+		mediaPlayer = new MediaPlayer();
 		mediaPlayer.setLooping(true);
         mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
         mediaPlayer.start();
