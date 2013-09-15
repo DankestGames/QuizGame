@@ -39,6 +39,7 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:layout_marginTop="5dp"
         android:id="@+id/resetStatsButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
