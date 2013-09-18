@@ -133,6 +133,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	public void endGame() {
 		Intent intent = new Intent(this, EndGameActivity.class);
 		startActivity(intent);
+		finish();
 	}
 
 	@Override

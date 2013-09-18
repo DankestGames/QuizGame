@@ -40,18 +40,21 @@ public class ChooseGameActivity extends Activity implements OnClickListener {
 			intent = new Intent(this, GameActivity.class);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
+			finish();
 			break;
 		case R.id.survival_button:
 			Log.i(TAG, "SurvivalButton was clicked. Creating intent");
 			intent = new Intent(this, GameActivity.class);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
+			finish();
 			break;
 		case R.id.hardcore_button:
 			Log.i(TAG, "HardcoreButton was clicked. Creating intent");
 			intent = new Intent(this, GameActivity.class);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
+			finish();
 			break;
 		}
 
