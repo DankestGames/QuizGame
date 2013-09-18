@@ -15,7 +15,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class OptionsActivity extends Activity implements OnClickListener,  OnSeekBarChangeListener{
 	
-	Button resetStatsButton, helpButton, aboutButton;
+	Button statsButton, helpButton, aboutButton;
 	SeekBar volumeSeekBar;
 	CheckBox soundCheckBox;
 	
@@ -29,8 +29,8 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 		setContentView(R.layout.options_activity);
 		Log.i(TAG, "OptionsActivity created");
 
-		resetStatsButton = (Button) findViewById(R.id.resetStatsButton);
-		resetStatsButton.setOnClickListener(this);
+		statsButton = (Button) findViewById(R.id.resetStatsButton);
+		statsButton.setOnClickListener(this);
 		helpButton = (Button) findViewById(R.id.helpButton);
 		helpButton.setOnClickListener(this);
 		aboutButton = (Button) findViewById(R.id.aboutButton);
