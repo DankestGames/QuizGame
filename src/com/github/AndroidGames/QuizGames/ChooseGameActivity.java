@@ -38,6 +38,7 @@ public class ChooseGameActivity extends Activity implements OnClickListener {
 		case R.id.on_time_button:
 			Log.i(TAG, "OnTimeButton was clicked. Creating intent");
 			intent = new Intent(this, GameActivity.class);
+			intent.putExtra("Type", 1);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
 			finish();
@@ -45,6 +46,7 @@ public class ChooseGameActivity extends Activity implements OnClickListener {
 		case R.id.survival_button:
 			Log.i(TAG, "SurvivalButton was clicked. Creating intent");
 			intent = new Intent(this, GameActivity.class);
+			intent.putExtra("Type", 2);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
 			finish();
@@ -52,6 +54,7 @@ public class ChooseGameActivity extends Activity implements OnClickListener {
 		case R.id.hardcore_button:
 			Log.i(TAG, "HardcoreButton was clicked. Creating intent");
 			intent = new Intent(this, GameActivity.class);
+			intent.putExtra("Type", 3);
 			Log.i(TAG, "Starting GameActivity");
 			startActivity(intent);
 			finish();
