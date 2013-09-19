@@ -10,11 +10,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class GameActivity extends Activity implements OnClickListener {
 	public static final String TAG = "QuizGame";
@@ -23,10 +25,17 @@ public class GameActivity extends Activity implements OnClickListener {
 	Button answerBButton;
 	Button answerCButton;
 	Button answerDButton;
+	TextView timeText;
+	TextView pointsText;
 	String rightAnswer = "";
 	ImageView questionImage;
 	HashSet<Integer> intSet;
+	CountDownTimer myTimer;
+	boolean isTimerOn;
 	int n; // Total amount of questions;
+	int typeOfGame;
+	int points;
+	long millisTimerRemains;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +53,53 @@ public class GameActivity extends Activity implements OnClickListener {
 		answerDButton.setOnClickListener(this);
 		questionImage = (ImageView) findViewById(R.id.question_image);
 
+		timeText = (TextView) findViewById(R.id.time_text);
+		pointsText = (TextView) findViewById(R.id.points_text);
+		points = 0;
+		isTimerOn = false;
+		Intent intent = getIntent();
+		typeOfGame = intent.getIntExtra("Type", 0);
+		millisTimerRemains = 0;
+		tuneGameActivity();
+		Log.i(TAG, "Type of the game is " + typeOfGame);
 		getTotal();
 		intSet = new HashSet<Integer>();
 		putNextQuestion();
+	}
+
+	
+	public void tuneGameActivity(){
+		switch (typeOfGame){
+		case 1:
+			setTimer(60000); //60seconds;
+			break;
+		case 2:
+			timeText.setText("");
+			break;
+		case 3:
+			setTimer(20000); //20seconds;
+			break;
+		}
+		pointsText.setText("0");
+	}
+	
+	public void setTimer(long millisInFuture) {
+		millisTimerRemains = millisInFuture;
+		int countDownInterval = 1000;
+		myTimer = new CountDownTimer(millisInFuture, countDownInterval) {
+			
+			public void onTick(long millisUntilFinished) {
+				timeText.setText("" + millisUntilFinished / 1000);
+				millisTimerRemains = millisUntilFinished;
+				Log.i(TAG, "Still counting: " + millisUntilFinished / 1000);
+				//TODO soundpool tic-tac
+			}
+
+			public void onFinish() {
+				endGame();
+			}
+		}.start();
+		isTimerOn = true;
 	}
 
 	public void getTotal() {
@@ -79,7 +132,7 @@ public class GameActivity extends Activity implements OnClickListener {
 			i++;
 			if (i == n) {
 				Log.i(TAG, "No more questions :(");
-				endGame();//For a while!!! 
+				endGame();// For a while!!!
 				break;
 			}
 		}
@@ -122,7 +175,7 @@ public class GameActivity extends Activity implements OnClickListener {
 				+ answer);
 		if (rightAnswer.equals(answer)) {
 			Log.i(TAG, "Answer is rigth!");
-			// points++;
+			addPoints();
 			putNextQuestion();
 		} else {
 			Log.i(TAG, "Answer is wrong! Going to EndGameActivity");
@@ -130,9 +183,31 @@ public class GameActivity extends Activity implements OnClickListener {
 		}
 	}
 
+	public void addPoints(){
+		//TODO good function to count points
+		switch (typeOfGame){
+		case 1:
+			points++;
+			break;
+		case 2:
+			points++;
+			break;
+		case 3:
+			points++;
+			break;
+		}
+		pointsText.setText("" + points);
+	}
+	
+	
 	public void endGame() {
 		Intent intent = new Intent(this, EndGameActivity.class);
 		startActivity(intent);
+		if(typeOfGame != 2) {
+			myTimer.cancel();
+			isTimerOn = false;
+		}
+		finish();
 	}
 
 	@Override
@@ -157,5 +232,20 @@ public class GameActivity extends Activity implements OnClickListener {
 
 		}
 
+	}
+	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		myTimer.cancel();
+		isTimerOn = false;
+	}
+	@Override 
+	protected void onResume(){
+		super.onResume();
+		if (typeOfGame != 2 && !isTimerOn){
+			setTimer(millisTimerRemains);
+			
+		}
 	}
 }
