@@ -97,6 +97,7 @@ public class GameActivity extends Activity implements OnClickListener {
 
 			public void onFinish() {
 				endGame();
+				millisTimerRemains = 0;
 			}
 		}.start();
 		isTimerOn = true;
@@ -236,9 +237,9 @@ public class GameActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onPause(){
 		super.onPause();
-		myTimer.cancel();
+		if (typeOfGame != 2) myTimer.cancel();
 		isTimerOn = false;
-	}
+	} 
 	@Override 
 	protected void onResume(){
 		super.onResume();
