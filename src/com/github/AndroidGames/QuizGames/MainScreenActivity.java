@@ -47,6 +47,7 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public void onDestroy() {
+		Log.d(TAG, "destroy mediaPlayer");
 		super.onDestroy();
 		if (mediaPlayer != null) {
 			try {
