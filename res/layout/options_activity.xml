@@ -39,11 +39,11 @@
 
     <Button
         android:layout_marginTop="5dp"
-        android:id="@+id/resetStatsButton"
+        android:id="@+id/statsButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Reset stats" />
+        android:text="Stats" />
     	
 
     <Button

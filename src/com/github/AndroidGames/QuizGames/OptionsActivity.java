@@ -29,7 +29,7 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 		setContentView(R.layout.options_activity);
 		Log.i(TAG, "OptionsActivity created");
 
-		statsButton = (Button) findViewById(R.id.resetStatsButton);
+		statsButton = (Button) findViewById(R.id.statsButton);
 		statsButton.setOnClickListener(this);
 		helpButton = (Button) findViewById(R.id.helpButton);
 		helpButton.setOnClickListener(this);
@@ -65,6 +65,12 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 			Log.i(TAG, "soundCheckBox was clicked.");
 			audioManager.setStreamMute(AudioManager.STREAM_MUSIC, soundCheckBox.isChecked());
 			break;
+		case R.id.statsButton:
+			Log.i(TAG, "Stats button was clicked. Creating intent");
+			intent = new Intent(this, StatsActivity.class);
+			Log.i(TAG, "Starting StatsActivity");
+			startActivity(intent);
+			break;		
 		}
 	}
 
