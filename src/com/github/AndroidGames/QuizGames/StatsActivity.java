@@ -3,7 +3,7 @@ package com.github.AndroidGames.QuizGames;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
+
 
 public class StatsActivity extends Activity {
 
