@@ -1,7 +1,13 @@
 package com.github.AndroidGames.QuizGames;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -9,8 +15,10 @@ import java.util.Scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Path;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +39,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	ImageView questionImage;
 	HashSet<Integer> intSet;
 	CountDownTimer myTimer;
+	private File textFile, textDir;
 	boolean isTimerOn;
 	int n; // Total amount of questions;
 	int typeOfGame;
@@ -201,6 +210,39 @@ public class GameActivity extends Activity implements OnClickListener {
 	
 	
 	public void endGame() {
+		String state = Environment.getExternalStorageState();
+		if (!state.equals(Environment.MEDIA_MOUNTED)) {
+			Log.i(TAG, "No external storage mounted");
+		} 
+		else {
+			Log.i(TAG, "File setting");
+			File externalDir = Environment.getExternalStorageDirectory();
+			textDir = new File(externalDir.getAbsolutePath()
+					+ File.separator + "com.QuizGame.data" + File.separator);
+			textFile = new File(externalDir.getAbsolutePath()
+					+ File.separator + "com.QuizGame.data" + File.separator
+					+ "highscore.ini");
+		}
+								
+		try {
+			Log.i(TAG, "Writing stats");
+			BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
+			writer.write("15\n15\n15\n0\n0\n0");
+			writer.close();
+		} catch (IOException e) {
+	        textFile.getParentFile().mkdirs();
+	        try {
+	        	Log.i(TAG, "Creating stats");
+				textFile.createNewFile();
+				BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
+				writer.write("15\n15\n15\n0\n0\n15");
+				writer.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	        
+		
 		Intent intent = new Intent(this, EndGameActivity.class);
 		startActivity(intent);
 		if(typeOfGame != 2) {
