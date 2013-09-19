@@ -26,30 +26,51 @@ public final class R {
         public static final int q_2=0x7f020002;
     }
     public static final class id {
-        public static final int aboutButton=0x7f090014;
-        public static final int action_settings=0x7f090017;
-        public static final int answer_a_button=0x7f090008;
-        public static final int answer_b_button=0x7f090009;
-        public static final int answer_c_button=0x7f09000a;
-        public static final int answer_d_button=0x7f09000b;
-        public static final int end_game_text=0x7f090003;
-        public static final int game_button=0x7f09000d;
+        public static final int aboutButton=0x7f090015;
+        public static final int action_settings=0x7f09002c;
+        public static final int answer_a_button=0x7f090009;
+        public static final int answer_b_button=0x7f09000a;
+        public static final int answer_c_button=0x7f09000b;
+        public static final int answer_d_button=0x7f09000c;
+        public static final int button1=0x7f090004;
+        public static final int game_button=0x7f09000e;
+        public static final int hardRecord=0x7f090029;
+        public static final int hardRecordText=0x7f09002a;
         public static final int hardcore_button=0x7f090002;
-        public static final int helpButton=0x7f090013;
-        public static final int logo_image=0x7f09000c;
+        public static final int helpButton=0x7f090014;
+        public static final int lastScore=0x7f09001d;
+        public static final int lastScoretext=0x7f09001e;
+        public static final int logo_image=0x7f09000d;
         public static final int on_time_button=0x7f090001;
-        public static final int options_button=0x7f09000e;
-        public static final int points_text=0x7f090006;
-        public static final int question_image=0x7f090007;
-        public static final int resetStatsButton=0x7f090012;
-        public static final int rules_text=0x7f090016;
-        public static final int rules_title=0x7f090015;
-        public static final int soundCheckBox=0x7f090010;
-        public static final int soundTextView=0x7f09000f;
+        public static final int options_button=0x7f09000f;
+        public static final int points_text=0x7f090007;
+        public static final int question_image=0x7f090008;
+        public static final int resetStatsButton=0x7f09002b;
+        public static final int rules_text=0x7f090017;
+        public static final int rules_title=0x7f090016;
+        public static final int soundCheckBox=0x7f090011;
+        public static final int soundTextView=0x7f090010;
+        public static final int statsButton=0x7f090013;
+        public static final int statsTitle=0x7f090018;
+        public static final int survRecord=0x7f090026;
+        public static final int survRecordText=0x7f090027;
         public static final int survival_button=0x7f090000;
-        public static final int textView1=0x7f090004;
-        public static final int time_text=0x7f090005;
-        public static final int volumeSeekBar=0x7f090011;
+        public static final int tableRow1=0x7f090019;
+        public static final int tableRow2=0x7f09001c;
+        public static final int tableRow3=0x7f09001f;
+        public static final int tableRow4=0x7f090022;
+        public static final int tableRow5=0x7f090025;
+        public static final int tableRow6=0x7f090028;
+        public static final int textView1=0x7f090003;
+        public static final int textView2=0x7f090005;
+        public static final int timeRecord=0x7f090023;
+        public static final int timeRecordText=0x7f090024;
+        public static final int time_text=0x7f090006;
+        public static final int totGamesPlayed=0x7f09001a;
+        public static final int totGamesPlayedText=0x7f09001b;
+        public static final int totPlayTime=0x7f090020;
+        public static final int totPlayTimeText=0x7f090021;
+        public static final int volumeSeekBar=0x7f090012;
     }
     public static final class layout {
         public static final int choose_game_activity=0x7f030000;
@@ -58,6 +79,7 @@ public final class R {
         public static final int main_screen_activity=0x7f030003;
         public static final int options_activity=0x7f030004;
         public static final int rules_activity=0x7f030005;
+        public static final int stats_activity=0x7f030006;
     }
     public static final class menu {
         public static final int main_screen=0x7f080000;
