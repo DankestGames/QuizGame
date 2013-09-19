@@ -101,7 +101,6 @@ public class GameActivity extends Activity implements OnClickListener {
 		}.start();
 		isTimerOn = true;
 	}
-
 	public void getTotal() {
 		AssetManager assetManager = getAssets();
 		InputStream inputStream = null;
