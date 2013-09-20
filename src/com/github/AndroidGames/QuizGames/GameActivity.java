@@ -1,6 +1,5 @@
 package com.github.AndroidGames.QuizGames;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -39,7 +38,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	ImageView questionImage;
 	HashSet<Integer> intSet;
 	CountDownTimer myTimer;
-	private File textFile, textDir;
+	private File textFile;
 	boolean isTimerOn;
 	int n; // Total amount of questions;
 	int typeOfGame;
@@ -51,6 +50,18 @@ public class GameActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_activity);
 		Log.i(TAG, "GameActivity created");
+		
+		String state = Environment.getExternalStorageState();
+		if (!state.equals(Environment.MEDIA_MOUNTED)) {
+			Log.i(TAG, "No external storage mounted");
+		} 
+		else {
+			Log.i(TAG, "File setting");
+			File externalDir = Environment.getExternalStorageDirectory();
+			textFile = new File(externalDir.getAbsolutePath()
+					+ File.separator + "com.QuizGame.data" + File.separator
+					+ "highscore.ini");
+		}
 
 		answerAButton = (Button) findViewById(R.id.answer_a_button);
 		answerAButton.setOnClickListener(this);
@@ -210,32 +221,61 @@ public class GameActivity extends Activity implements OnClickListener {
 	
 	
 	public void endGame() {
-		String state = Environment.getExternalStorageState();
-		if (!state.equals(Environment.MEDIA_MOUNTED)) {
-			Log.i(TAG, "No external storage mounted");
-		} 
-		else {
-			Log.i(TAG, "File setting");
-			File externalDir = Environment.getExternalStorageDirectory();
-			textDir = new File(externalDir.getAbsolutePath()
-					+ File.separator + "com.QuizGame.data" + File.separator);
-			textFile = new File(externalDir.getAbsolutePath()
-					+ File.separator + "com.QuizGame.data" + File.separator
-					+ "highscore.ini");
-		}
-								
+										
 		try {
 			Log.i(TAG, "Writing stats");
-			BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
-			writer.write("15\n15\n15\n0\n0\n0");
-			writer.close();
+			Scanner scanner = new Scanner(textFile);
+			int totGamePlayed = Integer.parseInt(scanner.nextLine()) + 1;
+			scanner.nextLine();
+			int timeModeRecord = Integer.parseInt(scanner.nextLine());
+			int survModeRecord = Integer.parseInt(scanner.nextLine());
+			int hardModeRecord = Integer.parseInt(scanner.nextLine());
+			
+			
+			switch (typeOfGame){
+			case 1:
+				if(timeModeRecord < points)
+					timeModeRecord = points;
+				break;
+			case 2:
+				if(survModeRecord < points)
+					survModeRecord = points;
+				break;
+			case 3:
+				if(hardModeRecord < points)
+					hardModeRecord = points;
+				break;
+			}
+			
+			scanner.close();
+			
+			PrintWriter writer;
+			writer = new PrintWriter(textFile, "UTF-8");
+			writer.println(totGamePlayed+ "\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
+			writer.close();			
 		} catch (IOException e) {
 	        textFile.getParentFile().mkdirs();
 	        try {
 	        	Log.i(TAG, "Creating stats");
 				textFile.createNewFile();
-				BufferedWriter writer = new BufferedWriter(new FileWriter(textFile));
-				writer.write("15\n15\n15\n0\n0\n15");
+				PrintWriter writer;
+				writer = new PrintWriter(textFile, "UTF-8");
+				int timeModeRecord = 0, survModeRecord = 0, hardModeRecord = 0;
+				switch (typeOfGame){
+				case 1:
+					if(timeModeRecord < points)
+						timeModeRecord = points;
+					break;
+				case 2:
+					if(survModeRecord < points)
+						survModeRecord = points;
+					break;
+				case 3:
+					if(hardModeRecord < points)
+						hardModeRecord = points;
+					break;
+				}
+				writer.println("1\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
 				writer.close();
 			} catch (IOException e1) {
 				e1.printStackTrace();

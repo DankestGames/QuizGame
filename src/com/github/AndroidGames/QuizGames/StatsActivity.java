@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class StatsActivity extends Activity implements OnClickListener{
 
 	private Button resetStatsButton;
-	private TextView totGamesText, lastScoreText, totPlayTimeText, timeRecordText, survRecordText, hardRecordText;
+	private TextView totGamesText, lastScoreText, timeRecordText, survRecordText, hardRecordText;
 	private String value;
 	private static final String TAG = "QuizGame";
 	private File textFile;
@@ -36,7 +36,6 @@ public class StatsActivity extends Activity implements OnClickListener{
 		resetStatsButton.setOnClickListener(this);
 		totGamesText = (TextView) findViewById(R.id.totGamesPlayedText);
 		lastScoreText = (TextView) findViewById(R.id.lastScoretext);
-		totPlayTimeText = (TextView) findViewById(R.id.totPlayTimeText);
 		timeRecordText = (TextView) findViewById(R.id.timeRecordText);
 		survRecordText = (TextView) findViewById(R.id.survRecordText);
 		hardRecordText = (TextView) findViewById(R.id.hardRecordText);
@@ -60,8 +59,6 @@ public class StatsActivity extends Activity implements OnClickListener{
 				totGamesText.setText(value);
 				value = scanner.nextLine();
 				lastScoreText.setText(value);
-				value = scanner.nextLine();
-				totPlayTimeText.setText(value);
 				value = scanner.nextLine();
 				timeRecordText.setText(value);
 				value = scanner.nextLine();
@@ -87,7 +84,7 @@ public class StatsActivity extends Activity implements OnClickListener{
 			PrintWriter writer;
 			try {
 				writer = new PrintWriter(textFile, "UTF-8");
-				writer.println("0\n0\n0\n0\n0\n0");
+				writer.println("0\n0\n0\n0\n0");
 				writer.close();
 				
 				Scanner scanner = new Scanner(textFile);
@@ -96,8 +93,6 @@ public class StatsActivity extends Activity implements OnClickListener{
 				totGamesText.setText(value);
 				value = scanner.nextLine();
 				lastScoreText.setText(value);
-				value = scanner.nextLine();
-				totPlayTimeText.setText(value);
 				value = scanner.nextLine();
 				timeRecordText.setText(value);
 				value = scanner.nextLine();
