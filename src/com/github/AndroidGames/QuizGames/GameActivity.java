@@ -1,12 +1,9 @@
 package com.github.AndroidGames.QuizGames;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,7 +11,6 @@ import java.util.Scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.graphics.Path;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -257,9 +253,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	        textFile.getParentFile().mkdirs();
 	        try {
 	        	Log.i(TAG, "Creating stats");
-				textFile.createNewFile();
-				PrintWriter writer;
-				writer = new PrintWriter(textFile, "UTF-8");
+								
 				int timeModeRecord = 0, survModeRecord = 0, hardModeRecord = 0;
 				switch (typeOfGame){
 				case 1:
@@ -275,8 +269,13 @@ public class GameActivity extends Activity implements OnClickListener {
 						hardModeRecord = points;
 					break;
 				}
+				
+				textFile.createNewFile();
+				PrintWriter writer;
+				writer = new PrintWriter(textFile, "UTF-8");
 				writer.println("1\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
 				writer.close();
+				
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
