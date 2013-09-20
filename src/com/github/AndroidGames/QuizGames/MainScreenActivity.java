@@ -15,7 +15,7 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 	Button gameButton;
 	Button optionsButton;
 
-	MediaPlayer mediaPlayer;
+	//MediaPlayer mediaPlayer;
 
 	private static final String TAG = "QuizGame";
 
@@ -30,11 +30,11 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		optionsButton = (Button) findViewById(R.id.options_button);
 		optionsButton.setOnClickListener(this);
 		
-		Log.d(TAG, "start mediaPlayer");
-		mediaPlayer = new MediaPlayer();
-		mediaPlayer.setLooping(true);
-        mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
-        mediaPlayer.start();
+		//Log.d(TAG, "start mediaPlayer");
+		//mediaPlayer = new MediaPlayer();
+		//mediaPlayer.setLooping(true);
+        //mediaPlayer = MediaPlayer.create(this, R.raw.beethoven);
+        //mediaPlayer.start();
 
 	}
 
@@ -45,19 +45,19 @@ public class MainScreenActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	
-	@Override
-	public void onDestroy() {
-		Log.d(TAG, "destroy mediaPlayer");
-		super.onDestroy();
-		if (mediaPlayer != null) {
-			try {
-				mediaPlayer.stop();
-				mediaPlayer.release();
-			} finally {
-				mediaPlayer = null;
-			}
-		}
-    }
+//	@Override
+//	public void onDestroy() {
+//		Log.d(TAG, "destroy mediaPlayer");
+//		super.onDestroy();
+//		if (mediaPlayer != null) {
+//			try {
+//				mediaPlayer.stop();
+//				mediaPlayer.release();
+//			} finally {
+//				mediaPlayer = null;
+//			}
+//		}
+//    }
 
 	@Override
 	public void onClick(View v) {
