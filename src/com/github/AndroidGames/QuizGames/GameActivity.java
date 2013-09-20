@@ -1,7 +1,9 @@
 package com.github.AndroidGames.QuizGames;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
@@ -11,6 +13,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +34,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	ImageView questionImage;
 	HashSet<Integer> intSet;
 	CountDownTimer myTimer;
+	private File textFile;
 	boolean isTimerOn;
 	int n; // Total amount of questions;
 	int typeOfGame;
@@ -42,6 +46,18 @@ public class GameActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_activity);
 		Log.i(TAG, "GameActivity created");
+		
+		String state = Environment.getExternalStorageState();
+		if (!state.equals(Environment.MEDIA_MOUNTED)) {
+			Log.i(TAG, "No external storage mounted");
+		} 
+		else {
+			Log.i(TAG, "File setting");
+			File externalDir = Environment.getExternalStorageDirectory();
+			textFile = new File(externalDir.getAbsolutePath()
+					+ File.separator + "com.QuizGame.data" + File.separator
+					+ "highscore.ini");
+		}
 
 		answerAButton = (Button) findViewById(R.id.answer_a_button);
 		answerAButton.setOnClickListener(this);
@@ -201,6 +217,71 @@ public class GameActivity extends Activity implements OnClickListener {
 	
 	
 	public void endGame() {
+										
+		try {
+			Log.i(TAG, "Writing stats");
+			Scanner scanner = new Scanner(textFile);
+			int totGamePlayed = Integer.parseInt(scanner.nextLine()) + 1;
+			scanner.nextLine();
+			int timeModeRecord = Integer.parseInt(scanner.nextLine());
+			int survModeRecord = Integer.parseInt(scanner.nextLine());
+			int hardModeRecord = Integer.parseInt(scanner.nextLine());
+			
+			
+			switch (typeOfGame){
+			case 1:
+				if(timeModeRecord < points)
+					timeModeRecord = points;
+				break;
+			case 2:
+				if(survModeRecord < points)
+					survModeRecord = points;
+				break;
+			case 3:
+				if(hardModeRecord < points)
+					hardModeRecord = points;
+				break;
+			}
+			
+			scanner.close();
+			
+			PrintWriter writer;
+			writer = new PrintWriter(textFile, "UTF-8");
+			writer.println(totGamePlayed+ "\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
+			writer.close();			
+		} catch (IOException e) {
+	        textFile.getParentFile().mkdirs();
+	        try {
+	        	Log.i(TAG, "Creating stats");
+								
+				int timeModeRecord = 0, survModeRecord = 0, hardModeRecord = 0;
+				switch (typeOfGame){
+				case 1:
+					if(timeModeRecord < points)
+						timeModeRecord = points;
+					break;
+				case 2:
+					if(survModeRecord < points)
+						survModeRecord = points;
+					break;
+				case 3:
+					if(hardModeRecord < points)
+						hardModeRecord = points;
+					break;
+				}
+				
+				textFile.createNewFile();
+				PrintWriter writer;
+				writer = new PrintWriter(textFile, "UTF-8");
+				writer.println("1\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
+				writer.close();
+				
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+	        
+		
 		Intent intent = new Intent(this, EndGameActivity.class);
 		startActivity(intent);
 		if(typeOfGame != 2) {

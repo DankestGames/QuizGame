@@ -83,13 +83,11 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 
 	@Override
 	public void onStartTrackingTouch(SeekBar seekBar) {
-		// TODO Автоматически созданная заглушка метода
 		
 	}
 
 	@Override
 	public void onStopTrackingTouch(SeekBar seekBar) {
-		// TODO Автоматически созданная заглушка метода
 		
 	}
 
