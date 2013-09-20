@@ -11,6 +11,8 @@ import java.util.Scanner;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -40,7 +42,9 @@ public class GameActivity extends Activity implements OnClickListener {
 	int typeOfGame;
 	int points;
 	long millisTimerRemains;
-
+	private SoundPool soundPool;
+	private int chpokId = -1;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,6 +85,14 @@ public class GameActivity extends Activity implements OnClickListener {
 		getTotal();
 		intSet = new HashSet<Integer>();
 		putNextQuestion();
+		
+		Log.i(TAG, "Loading chpok sound");
+		soundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
+		try {
+			chpokId = soundPool.load(getAssets().openFd("sounds/chpok.mp3"), 1);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	
@@ -219,6 +231,7 @@ public class GameActivity extends Activity implements OnClickListener {
 	public void endGame() {
 										
 		try {
+			
 			Log.i(TAG, "Writing stats");
 			Scanner scanner = new Scanner(textFile);
 			int totGamePlayed = Integer.parseInt(scanner.nextLine()) + 1;
@@ -296,18 +309,22 @@ public class GameActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.answer_a_button:
 			Log.i(TAG, "Answer A was clicked");
+			soundPool.play(chpokId, 1, 1, 0, 0, 1);
 			checkAnswer("A");
 			break;
 		case R.id.answer_b_button:
 			Log.i(TAG, "Answer B was clicked");
+			soundPool.play(chpokId, 1, 1, 0, 0, 1);
 			checkAnswer("B");
 			break;
 		case R.id.answer_c_button:
 			Log.i(TAG, "Answer C was clicked");
+			soundPool.play(chpokId, 1, 1, 0, 0, 1);
 			checkAnswer("C");
 			break;
 		case R.id.answer_d_button:
 			Log.i(TAG, "Answer D was clicked");
+			soundPool.play(chpokId, 1, 1, 0, 0, 1);
 			checkAnswer("D");
 			break;
 
