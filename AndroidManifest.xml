@@ -27,6 +27,7 @@
         <activity android:name="GameActivity"></activity>
         <activity android:name="StatsActivity"></activity>
         <activity android:name="OptionsActivity"></activity>
+        <activity android:name="AboutActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
