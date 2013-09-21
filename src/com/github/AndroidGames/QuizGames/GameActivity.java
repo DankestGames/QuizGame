@@ -229,7 +229,9 @@ public class GameActivity extends Activity implements OnClickListener {
 	
 	
 	public void endGame() {
-										
+		
+		Intent intent = new Intent(this, EndGameActivity.class);
+									
 		try {
 			
 			Log.i(TAG, "Writing stats");
@@ -243,16 +245,34 @@ public class GameActivity extends Activity implements OnClickListener {
 			
 			switch (typeOfGame){
 			case 1:
-				if(timeModeRecord < points)
+				if (timeModeRecord < points) {
 					timeModeRecord = points;
+					intent.putExtra("Type", 1);
+					Log.i(TAG, "Made a time mode record!");
+				} else {
+					intent.putExtra("Type", 0);
+					Log.i(TAG, "LOSER! NO RECORD!");
+				}
 				break;
 			case 2:
-				if(survModeRecord < points)
+				if(survModeRecord < points){
 					survModeRecord = points;
+					intent.putExtra("Type", 1);
+					Log.i(TAG, "Made a surv mode record!");
+				} else {
+					intent.putExtra("Type", 0);
+					Log.i(TAG, "LOSER! NO RECORD!");
+				}
 				break;
 			case 3:
-				if(hardModeRecord < points)
+				if(hardModeRecord < points){
 					hardModeRecord = points;
+					intent.putExtra("Type", 1);
+					Log.i(TAG, "Made a hard mode record!");
+				} else {
+					intent.putExtra("Type", 0);
+					Log.i(TAG, "LOSER! NO RECORD!");
+				}
 				break;
 			}
 			
@@ -270,16 +290,34 @@ public class GameActivity extends Activity implements OnClickListener {
 				int timeModeRecord = 0, survModeRecord = 0, hardModeRecord = 0;
 				switch (typeOfGame){
 				case 1:
-					if(timeModeRecord < points)
-						timeModeRecord = points;
+					if(timeModeRecord < points){
+						timeModeRecord = points;						
+						intent.putExtra("Type", 1);
+						Log.i(TAG, "Made a time mode record!");
+					} else {
+						intent.putExtra("Type", 0);
+						Log.i(TAG, "LOSER! NO RECORD!");
+					}
 					break;
 				case 2:
-					if(survModeRecord < points)
+					if(survModeRecord < points){
 						survModeRecord = points;
+						intent.putExtra("Type", 1);
+						Log.i(TAG, "Made a surv mode record!");
+					} else {
+						intent.putExtra("Type", 0);
+						Log.i(TAG, "LOSER! NO RECORD!");
+					}
 					break;
 				case 3:
-					if(hardModeRecord < points)
+					if(hardModeRecord < points){
 						hardModeRecord = points;
+						intent.putExtra("Type", 1);
+						Log.i(TAG, "Made a hard mode record!");
+					} else {
+						intent.putExtra("Type", 0);
+						Log.i(TAG, "LOSER! NO RECORD!");
+					}
 					break;
 				}
 				
@@ -295,7 +333,6 @@ public class GameActivity extends Activity implements OnClickListener {
 		}
 	        
 		
-		Intent intent = new Intent(this, EndGameActivity.class);
 		startActivity(intent);
 		if(typeOfGame != 2) {
 			myTimer.cancel();
