@@ -31,6 +31,7 @@ public final class R {
         public static final int about_text=0x7f080001;
         public static final int about_title=0x7f080000;
         public static final int action_settings=0x7f08002c;
+        public static final int adView=0x7f080009;
         public static final int answer_a_button=0x7f08000d;
         public static final int answer_b_button=0x7f08000e;
         public static final int answer_c_button=0x7f08000f;
@@ -64,7 +65,6 @@ public final class R {
         public static final int tableRow4=0x7f080022;
         public static final int tableRow5=0x7f080025;
         public static final int tableRow6=0x7f080028;
-        public static final int textView1=0x7f080009;
         public static final int timeRecord=0x7f080023;
         public static final int timeRecordText=0x7f080024;
         public static final int time_text=0x7f08000a;

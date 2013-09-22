@@ -23,6 +23,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
+
 public class GameActivity extends Activity implements OnClickListener {
 	public static final String TAG = "QuizGame";
 
@@ -44,23 +47,23 @@ public class GameActivity extends Activity implements OnClickListener {
 	long millisTimerRemains;
 	private SoundPool soundPool;
 	private int chpokId = -1;
-	
+
+	AdView adView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.game_activity);
 		Log.i(TAG, "GameActivity created");
-		
+
 		String state = Environment.getExternalStorageState();
 		if (!state.equals(Environment.MEDIA_MOUNTED)) {
 			Log.i(TAG, "No external storage mounted");
-		} 
-		else {
+		} else {
 			Log.i(TAG, "File setting");
 			File externalDir = Environment.getExternalStorageDirectory();
-			textFile = new File(externalDir.getAbsolutePath()
-					+ File.separator + "com.QuizGame.data" + File.separator
-					+ "highscore.ini");
+			textFile = new File(externalDir.getAbsolutePath() + File.separator
+					+ "com.QuizGame.data" + File.separator + "highscore.ini");
 		}
 
 		answerAButton = (Button) findViewById(R.id.answer_a_button);
@@ -85,7 +88,7 @@ public class GameActivity extends Activity implements OnClickListener {
 		getTotal();
 		intSet = new HashSet<Integer>();
 		putNextQuestion();
-		
+
 		Log.i(TAG, "Loading chpok sound");
 		soundPool = new SoundPool(20, AudioManager.STREAM_MUSIC, 0);
 		try {
@@ -93,34 +96,37 @@ public class GameActivity extends Activity implements OnClickListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		AdView adView = (AdView) this.findViewById(R.id.adView);
+		adView.loadAd(new AdRequest());
+
 	}
 
-	
-	public void tuneGameActivity(){
-		switch (typeOfGame){
+	public void tuneGameActivity() {
+		switch (typeOfGame) {
 		case 1:
-			setTimer(60000); //60seconds;
+			setTimer(60000); // 60seconds;
 			break;
 		case 2:
 			timeText.setText("");
 			break;
 		case 3:
-			setTimer(20000); //20seconds;
+			setTimer(20000); // 20seconds;
 			break;
 		}
 		pointsText.setText("0");
 	}
-	
+
 	public void setTimer(long millisInFuture) {
 		millisTimerRemains = millisInFuture;
 		int countDownInterval = 1000;
 		myTimer = new CountDownTimer(millisInFuture, countDownInterval) {
-			
+
 			public void onTick(long millisUntilFinished) {
 				timeText.setText("" + millisUntilFinished / 1000);
 				millisTimerRemains = millisUntilFinished;
 				Log.i(TAG, "Still counting: " + millisUntilFinished / 1000);
-				//TODO soundpool tic-tac
+				// TODO soundpool tic-tac
 			}
 
 			public void onFinish() {
@@ -130,6 +136,7 @@ public class GameActivity extends Activity implements OnClickListener {
 		}.start();
 		isTimerOn = true;
 	}
+
 	public void getTotal() {
 		AssetManager assetManager = getAssets();
 		InputStream inputStream = null;
@@ -211,9 +218,9 @@ public class GameActivity extends Activity implements OnClickListener {
 		}
 	}
 
-	public void addPoints(){
-		//TODO good function to count points
-		switch (typeOfGame){
+	public void addPoints() {
+		// TODO good function to count points
+		switch (typeOfGame) {
 		case 1:
 			points++;
 			break;
@@ -226,14 +233,13 @@ public class GameActivity extends Activity implements OnClickListener {
 		}
 		pointsText.setText("" + points);
 	}
-	
-	
+
 	public void endGame() {
-		
+
 		Intent intent = new Intent(this, EndGameActivity.class);
-									
+
 		try {
-			
+
 			Log.i(TAG, "Writing stats");
 			Scanner scanner = new Scanner(textFile);
 			int totGamePlayed = Integer.parseInt(scanner.nextLine()) + 1;
@@ -241,9 +247,8 @@ public class GameActivity extends Activity implements OnClickListener {
 			int timeModeRecord = Integer.parseInt(scanner.nextLine());
 			int survModeRecord = Integer.parseInt(scanner.nextLine());
 			int hardModeRecord = Integer.parseInt(scanner.nextLine());
-			
-			
-			switch (typeOfGame){
+
+			switch (typeOfGame) {
 			case 1:
 				if (timeModeRecord < points) {
 					timeModeRecord = points;
@@ -255,7 +260,7 @@ public class GameActivity extends Activity implements OnClickListener {
 				}
 				break;
 			case 2:
-				if(survModeRecord < points){
+				if (survModeRecord < points) {
 					survModeRecord = points;
 					intent.putExtra("Type", 1);
 					Log.i(TAG, "Made a surv mode record!");
@@ -265,7 +270,7 @@ public class GameActivity extends Activity implements OnClickListener {
 				}
 				break;
 			case 3:
-				if(hardModeRecord < points){
+				if (hardModeRecord < points) {
 					hardModeRecord = points;
 					intent.putExtra("Type", 1);
 					Log.i(TAG, "Made a hard mode record!");
@@ -275,23 +280,25 @@ public class GameActivity extends Activity implements OnClickListener {
 				}
 				break;
 			}
-			
+
 			scanner.close();
-			
+
 			PrintWriter writer;
 			writer = new PrintWriter(textFile, "UTF-8");
-			writer.println(totGamePlayed+ "\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
-			writer.close();			
+			writer.println(totGamePlayed + "\n" + points + "\n"
+					+ timeModeRecord + "\n" + survModeRecord + "\n"
+					+ hardModeRecord);
+			writer.close();
 		} catch (IOException e) {
-	        textFile.getParentFile().mkdirs();
-	        try {
-	        	Log.i(TAG, "Creating stats");
-								
+			textFile.getParentFile().mkdirs();
+			try {
+				Log.i(TAG, "Creating stats");
+
 				int timeModeRecord = 0, survModeRecord = 0, hardModeRecord = 0;
-				switch (typeOfGame){
+				switch (typeOfGame) {
 				case 1:
-					if(timeModeRecord < points){
-						timeModeRecord = points;						
+					if (timeModeRecord < points) {
+						timeModeRecord = points;
 						intent.putExtra("Type", 1);
 						Log.i(TAG, "Made a time mode record!");
 					} else {
@@ -300,7 +307,7 @@ public class GameActivity extends Activity implements OnClickListener {
 					}
 					break;
 				case 2:
-					if(survModeRecord < points){
+					if (survModeRecord < points) {
 						survModeRecord = points;
 						intent.putExtra("Type", 1);
 						Log.i(TAG, "Made a surv mode record!");
@@ -310,7 +317,7 @@ public class GameActivity extends Activity implements OnClickListener {
 					}
 					break;
 				case 3:
-					if(hardModeRecord < points){
+					if (hardModeRecord < points) {
 						hardModeRecord = points;
 						intent.putExtra("Type", 1);
 						Log.i(TAG, "Made a hard mode record!");
@@ -320,21 +327,21 @@ public class GameActivity extends Activity implements OnClickListener {
 					}
 					break;
 				}
-				
+
 				textFile.createNewFile();
 				PrintWriter writer;
 				writer = new PrintWriter(textFile, "UTF-8");
-				writer.println("1\n" + points + "\n" + timeModeRecord + "\n" + survModeRecord + "\n" + hardModeRecord);
+				writer.println("1\n" + points + "\n" + timeModeRecord + "\n"
+						+ survModeRecord + "\n" + hardModeRecord);
 				writer.close();
-				
+
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		}
-	        
-		
+
 		startActivity(intent);
-		if(typeOfGame != 2) {
+		if (typeOfGame != 2) {
 			myTimer.cancel();
 			isTimerOn = false;
 		}
@@ -368,19 +375,27 @@ public class GameActivity extends Activity implements OnClickListener {
 		}
 
 	}
-	
+
 	@Override
-	protected void onPause(){
+	protected void onPause() {
 		super.onPause();
-		if (typeOfGame != 2) myTimer.cancel();
+		if (typeOfGame != 2)
+			myTimer.cancel();
 		isTimerOn = false;
-	} 
-	@Override 
-	protected void onResume(){
+	}
+
+	@Override
+	protected void onResume() {
 		super.onResume();
-		if (typeOfGame != 2 && !isTimerOn){
+		if (typeOfGame != 2 && !isTimerOn) {
 			setTimer(millisTimerRemains);
-			
+
 		}
+	}
+
+	@Override
+	public void onDestroy() {
+		//TODO adView.destroy();
+		super.onDestroy();
 	}
 }
