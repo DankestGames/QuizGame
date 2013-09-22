@@ -13,7 +13,7 @@
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-2171411291704312/9434784989"
         ads:loadAdOnCreate="true"
-        ads:testDevices="TEST_EMULATOR, 015d2578190c120d" >
+        ads:testDevices="TEST_EMULATOR" >
 
     </com.google.ads.AdView>
  
