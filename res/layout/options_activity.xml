@@ -12,23 +12,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".OptionsActivity" >
 
-    <LinearLayout
+   <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:layout_weight="1"
-            android:id="@+id/soundTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Switch sound On/Off" />
+        android:layout_height="wrap_content"
+        android:gravity="center" >
 
         <CheckBox
             android:id="@+id/soundCheckBox"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:text="" />
+            android:text="@string/sound"
+            android:layout_gravity="center" />
+
+ 
+
 
     </LinearLayout>
 
@@ -43,20 +40,20 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="Stats" />
+        android:text="@string/stats" />
     	
 
     <Button
         android:id="@+id/helpButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Help" />
+        android:text="@string/help" />
 
     <Button
         android:layout_marginTop="10dp"
         android:id="@+id/aboutButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="About" />
+        android:text="@string/about" />
 
 </LinearLayout>

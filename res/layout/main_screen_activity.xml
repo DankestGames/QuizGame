@@ -13,6 +13,7 @@
 
     <ImageView
         android:id="@+id/logo_image"
+        android:contentDescription="@string/logo_image"
         android:layout_width="203dp"
         android:layout_height="203dp"
         android:layout_centerHorizontal="true"
@@ -25,7 +26,7 @@
         android:layout_below="@id/logo_image"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Game" />
+        android:text="@string/play" />
 
     <Button
         android:id="@+id/options_button"
@@ -34,6 +35,6 @@
         android:layout_below="@id/game_button"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Options" />
+        android:text="@string/options" />
 
 </RelativeLayout>

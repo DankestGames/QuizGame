@@ -27,22 +27,22 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f080005;
-        public static final int aboutButton=0x7f080019;
+        public static final int aboutButton=0x7f080018;
         public static final int about_text=0x7f080001;
         public static final int about_title=0x7f080000;
-        public static final int action_settings=0x7f08002d;
+        public static final int action_settings=0x7f08002c;
         public static final int answer_a_button=0x7f08000d;
         public static final int answer_b_button=0x7f08000e;
         public static final int answer_c_button=0x7f08000f;
         public static final int answer_d_button=0x7f080010;
         public static final int gameOverText=0x7f080006;
         public static final int game_button=0x7f080012;
-        public static final int hardRecord=0x7f08002a;
-        public static final int hardRecordText=0x7f08002b;
+        public static final int hardRecord=0x7f080029;
+        public static final int hardRecordText=0x7f08002a;
         public static final int hardcore_button=0x7f080004;
-        public static final int helpButton=0x7f080018;
-        public static final int lastScore=0x7f080021;
-        public static final int lastScoretext=0x7f080022;
+        public static final int helpButton=0x7f080017;
+        public static final int lastScore=0x7f080020;
+        public static final int lastScoretext=0x7f080021;
         public static final int logo_image=0x7f080011;
         public static final int mainMenuButton=0x7f080008;
         public static final int on_time_button=0x7f080003;
@@ -50,28 +50,27 @@ public final class R {
         public static final int points_text=0x7f08000b;
         public static final int question_image=0x7f08000c;
         public static final int recordText=0x7f080007;
-        public static final int resetStatsButton=0x7f08002c;
-        public static final int rules_text=0x7f08001b;
-        public static final int rules_title=0x7f08001a;
-        public static final int soundCheckBox=0x7f080015;
-        public static final int soundTextView=0x7f080014;
-        public static final int statsButton=0x7f080017;
-        public static final int statsTitle=0x7f08001c;
-        public static final int survRecord=0x7f080027;
-        public static final int survRecordText=0x7f080028;
+        public static final int resetStatsButton=0x7f08002b;
+        public static final int rules_text=0x7f08001a;
+        public static final int rules_title=0x7f080019;
+        public static final int soundCheckBox=0x7f080014;
+        public static final int statsButton=0x7f080016;
+        public static final int statsTitle=0x7f08001b;
+        public static final int survRecord=0x7f080026;
+        public static final int survRecordText=0x7f080027;
         public static final int survival_button=0x7f080002;
-        public static final int tableRow1=0x7f08001d;
-        public static final int tableRow2=0x7f080020;
-        public static final int tableRow4=0x7f080023;
-        public static final int tableRow5=0x7f080026;
-        public static final int tableRow6=0x7f080029;
+        public static final int tableRow1=0x7f08001c;
+        public static final int tableRow2=0x7f08001f;
+        public static final int tableRow4=0x7f080022;
+        public static final int tableRow5=0x7f080025;
+        public static final int tableRow6=0x7f080028;
         public static final int textView1=0x7f080009;
-        public static final int timeRecord=0x7f080024;
-        public static final int timeRecordText=0x7f080025;
+        public static final int timeRecord=0x7f080023;
+        public static final int timeRecordText=0x7f080024;
         public static final int time_text=0x7f08000a;
-        public static final int totGamesPlayed=0x7f08001e;
-        public static final int totGamesPlayedText=0x7f08001f;
-        public static final int volumeSeekBar=0x7f080016;
+        public static final int totGamesPlayed=0x7f08001d;
+        public static final int totGamesPlayedText=0x7f08001e;
+        public static final int volumeSeekBar=0x7f080015;
     }
     public static final class layout {
         public static final int about_activity=0x7f030000;
@@ -87,9 +86,21 @@ public final class R {
         public static final int main_screen=0x7f070000;
     }
     public static final class string {
+        public static final int about=0x7f050007;
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int game_over=0x7f050003;
+        public static final int hardcore=0x7f05000c;
+        public static final int hello_world=0x7f05000e;
+        public static final int help=0x7f050006;
+        public static final int logo_image=0x7f05000d;
+        public static final int main_menu=0x7f050002;
+        public static final int on_time=0x7f05000b;
+        public static final int options=0x7f050009;
+        public static final int play=0x7f050008;
+        public static final int sound=0x7f050004;
+        public static final int stats=0x7f050005;
+        public static final int survival=0x7f05000a;
     }
     public static final class style {
         /** 

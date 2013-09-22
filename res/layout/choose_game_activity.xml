@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Survival" />
+        android:text="@string/survival" />
 
     <Button
         android:id="@+id/on_time_button"
@@ -26,7 +26,7 @@
         android:layout_above="@+id/survival_button"
         android:layout_alignLeft="@+id/survival_button"
         android:layout_marginBottom="50dp"
-        android:text="On time" />
+        android:text="@string/on_time" />
 
     <Button
         android:id="@+id/hardcore_button"
@@ -35,6 +35,6 @@
         android:layout_alignLeft="@+id/survival_button"
         android:layout_below="@+id/survival_button"
         android:layout_marginTop="50dp"
-        android:text="Hardcore" />
+        android:text="@string/hardcore" />
 
 </RelativeLayout>
