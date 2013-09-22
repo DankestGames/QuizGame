@@ -17,7 +17,7 @@
         android:layout_width="203dp"
         android:layout_height="203dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/logo" />
 
     <Button
         android:id="@+id/game_button"
