@@ -45,9 +45,14 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
         volumeSeekBar.setMax(maxVolume);
         volumeSeekBar.setProgress(curVolume);         
         volumeSeekBar.setOnSeekBarChangeListener(this);
+        volumeSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
         
         soundCheckBox = (CheckBox) findViewById(R.id.soundCheckBox);
         soundCheckBox.setOnClickListener(this);
+        if(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) > 0)
+        	soundCheckBox.setChecked(false);
+        else
+        	soundCheckBox.setChecked(true);
 	}
 	
 	@Override
@@ -63,7 +68,13 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 			break;
 		case R.id.soundCheckBox:
 			Log.i(TAG, "soundCheckBox was clicked.");
-			audioManager.setStreamMute(AudioManager.STREAM_MUSIC, soundCheckBox.isChecked());
+			if (soundCheckBox.isChecked()) {
+				audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, 0, 0);
+				volumeSeekBar.setProgress(0);
+			} else {
+				audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,	audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC),	0);
+				volumeSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
+			}
 			break;
 		case R.id.statsButton:
 			Log.i(TAG, "Stats button was clicked. Creating intent");
