@@ -70,7 +70,13 @@ public class OptionsActivity extends Activity implements OnClickListener,  OnSee
 			intent = new Intent(this, StatsActivity.class);
 			Log.i(TAG, "Starting StatsActivity");
 			startActivity(intent);
-			break;		
+			break;
+		case R.id.aboutButton:
+			Log.i(TAG, "About button was clicked. Creating intent");
+			intent = new Intent(this, AboutActivity.class);
+			Log.i(TAG, "Starting AboutActivity");
+			startActivity(intent);
+			break;
 		}
 	}
 
